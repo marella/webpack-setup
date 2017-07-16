@@ -2,28 +2,12 @@
 
 Simple webpack config for React and Sass applications.
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<!-- TOC depthFrom:2 depthTo:3 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Installation](#installation)
 - [Example](#example)
 - [Documentation](#documentation)
 	- [Available Methods](#available-methods)
-		- [`define(globals = {})`](#defineglobals-)
-		- [`env(env, match = true)`](#envenv-match-true)
-		- [`externals(externals)`](#externalsexternals)
-		- [`fonts(dst, options = {})`](#fontsdst-options-)
-		- [`hot()`](#hot)
-		- [`html(src, options = {})`](#htmlsrc-options-)
-		- [`images(dst, options = {})`](#imagesdst-options-)
-		- [`init(settings = {})`](#initsettings-)
-		- [`js(src, dst)`](#jssrc-dst)
-		- [`notify(options = {})`](#notifyoptions-)
-		- [`react(src)`](#reactsrc)
-		- [`sass(src, dst, options = {})`](#sasssrc-dst-options-)
-		- [`server(options = {})`](#serveroptions-)
-		- [`settings(values = {})`](#settingsvalues-)
-		- [`uglify(options = {})`](#uglifyoptions-)
-		- [`vendors(vendors = [])`](#vendorsvendors-)
 	- [Custom Config](#custom-config)
 - [License](#license)
 
