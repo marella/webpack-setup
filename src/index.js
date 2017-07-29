@@ -1,5 +1,6 @@
 const tools = {
   babel: require('./babel'),
+  copy: require('./copy'),
   define: require('./define'),
   externals: require('./externals'),
   fonts: require('./fonts'),

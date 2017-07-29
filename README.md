@@ -71,6 +71,15 @@ setup
   .babel('src', { presets: ['es2015'] })
 ```
 
+#### `copy(patterns, options = {})`
+
+Copies files and directories using `copy-webpack-plugin`. `patterns` array and `options` object are passed to the plugin.
+
+```js
+setup
+  .copy([{ from: 'public' }])
+```
+
 #### `define(globals = {})`
 
 List of globals passed to `DefinePlugin`.
@@ -130,7 +139,7 @@ setup
 
 #### `html(src, options = {})`
 
-Specify the file using `src` that should be loaded using `HtmlWebpackPlugin`. `options` object is passed to the plugin.
+Specify the file using `src` that should be loaded using `html-webpack-plugin`. `options` object is passed to the plugin.
 
 ```js
 setup
@@ -186,7 +195,7 @@ setup
 
 #### `sass(src, dst, options = {})`
 
-Configures `sass-loader` using `src` as `includePaths` and `dst` as output directory of compiled CSS files. Output directory is relative to the `settings.output` directory. `options` object is passed as `sass-loader` options.
+Configures `sass-loader` using `src` as `includePaths` and `dst` as output directory of compiled CSS files. Output directory is relative to the `settings.output` directory. `options` object is passed as `sass-loader` options. Styles are separated from `js` files using `extract-text-webpack-plugin`.
 
 ```js
 setup
