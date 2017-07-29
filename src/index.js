@@ -51,10 +51,10 @@ class Api {
       return this
     }
 
-    this.env = this.env.bind(this)
+    this.when = this.when.bind(this)
   }
 
-  env(env, match = true) {
+  when(env, match = true) {
     if (env === 'any' || env === process.env.NODE_ENV === match) {
       return this
     }
@@ -62,7 +62,7 @@ class Api {
     const me = this
     const fake = new Proxy(
       {
-        env: me.env,
+        when: me.when,
       },
       {
         get(target, name) {

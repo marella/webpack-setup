@@ -91,23 +91,6 @@ setup
   })
 ```
 
-#### `env(env, match = true)`
-
-Useful for writing environment specific config using `process.env.NODE_ENV`:
-
-```js
-setup
-  .env('development')
-  .server() // called only when env is development
-  .hot() // called only when env is development
-
-  .env('production')
-  .uglify() // called only when env is production
-
-  .env('any')
-  .notify() // called always
-```
-
 #### `externals(externals)`
 
 Dependencies to exclude from output bundles.
@@ -245,6 +228,26 @@ setup
     'react',
     'react-dom',
   ])
+```
+
+#### `when(env, match = true)`
+
+Useful for writing environment specific config using `process.env.NODE_ENV`. `match` denotes whether it should match or shouldn't match.
+
+```js
+setup
+  .when('development')
+  .server() // called only when env is development
+  .hot() // called only when env is development
+
+  .when('production')
+  .uglify() // called only when env is production
+
+  .when('any')
+  .notify() // called always
+
+  .when('production', false)
+  .notify() // called only when env is NOT production
 ```
 
 ### Custom Config
