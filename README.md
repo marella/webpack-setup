@@ -82,7 +82,7 @@ setup
 
 #### `define(globals = {})`
 
-List of globals passed to `DefinePlugin`.
+List of globals passed to `DefinePlugin`. `process.env.NODE_ENV` is automatically set.
 
 ```js
 setup
