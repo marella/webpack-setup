@@ -1,4 +1,5 @@
 const tools = {
+  babel: require('./babel'),
   define: require('./define'),
   externals: require('./externals'),
   fonts: require('./fonts'),
@@ -26,11 +27,14 @@ class Api {
       env: process.env.NODE_ENV,
       main: 'app',
       modules: [],
-      output: 'dist',
+      output: 'build',
       polyfill: false,
       production: process.env.NODE_ENV === 'production',
       versioning: process.env.NODE_ENV === 'production',
-      sourcemaps: process.env.NODE_ENV === 'production' ? false : 'cheap-module-source-map',
+      sourcemaps:
+        process.env.NODE_ENV === 'production'
+          ? false
+          : 'cheap-module-source-map',
     }
 
     for (let name in tools) {
@@ -50,16 +54,21 @@ class Api {
   }
 
   env(env, match = true) {
-    if (env === 'any' || (env === process.env.NODE_ENV) === match) {
+    if (env === 'any' || env === process.env.NODE_ENV === match) {
       return this
     }
 
     const me = this
-    const fake = new Proxy({
-      env: me.env,
-    }, {
-      get(target, name) { return name in target ? target[name] : () => fake },
-    })
+    const fake = new Proxy(
+      {
+        env: me.env,
+      },
+      {
+        get(target, name) {
+          return name in target ? target[name] : () => fake
+        },
+      }
+    )
     return fake
   }
 }

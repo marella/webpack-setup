@@ -1,6 +1,6 @@
 # webpack-setup
 
-Simple webpack config for React and Sass applications.
+[Webpack config] simplified.
 
 <!-- TOC depthFrom:2 depthTo:3 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -29,10 +29,10 @@ const setup = require('webpack-setup')
 
 setup
   .init({
-    output: 'dist',
+    output: 'build',
   })
   .js('src/index.js', 'js')
-  .react('src')
+  .babel('src', { presets: ['es2015'] })
   .sass('src/styles', 'css')
 
 module.exports = setup.config
@@ -52,7 +52,7 @@ Default `settings`:
   env: process.env.NODE_ENV, // 'development' or 'production'
   main: 'app', // key name for main entry point NOT the actual file path
   modules: [], // to resolve absolute imports
-  output: 'dist', // directory to save the final build
+  output: 'build', // directory to save the final build
   polyfill: false, // when true uses 'babel-polyfill' or you can provide a file path to your custom polyfill
   production: process.env.NODE_ENV === 'production', // when true runs some optimizations which can be slow for development
   versioning: process.env.NODE_ENV === 'production', // when true adds [hash] to output filenames. useful for cache busting on production but can be slow for development
@@ -61,6 +61,15 @@ Default `settings`:
 ```
 
 ### Available Methods
+
+#### `babel(src, options = {})`
+
+Configures `babel-loader` to compile JS files. `src` specifies the directory paths to include for compilation. `options` object is passed as `babel-loader` options.
+
+```js
+setup
+  .babel('src', { presets: ['es2015'] })
+```
 
 #### `define(globals = {})`
 
@@ -144,7 +153,7 @@ The first method that should be called to initialize the config object.
 ```js
 setup
   .init({
-    output: 'dist',
+    output: 'build',
   })
 ```
 
@@ -166,9 +175,9 @@ setup
   .notify()
 ```
 
-#### `react(src)`
+#### `react(src, options = {})`
 
-Configures `babel-loader` to compile JSX. `src` specifies the directory paths to include for compilation.
+Configures `babel-loader` to compile ES6 and JSX syntax. `src` specifies the directory paths to include for compilation. `options` object is passed as `babel-loader` options.
 
 ```js
 setup
@@ -234,7 +243,7 @@ setup
 You may modify the config object before exporting to add custom rules or plugins that are not provided by `webpack-setup`:
 
 ```js
-const { config } = setup.config
+const { config } = setup
 
 // Add custom rules or plugins here.
 
@@ -244,7 +253,8 @@ module.exports = config
 
 ## License
 
-[MIT License][license].
+[MIT][license]
 
 
 [license]: /LICENSE
+[Webpack config]: https://webpack.js.org/configuration/
