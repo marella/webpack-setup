@@ -1,6 +1,6 @@
 {
   "name": "webpack-setup",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple webpack config for React and Sass applications.",
   "main": "src/index.js",
   "dependencies": {
