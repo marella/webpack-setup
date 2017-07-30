@@ -4,14 +4,19 @@ const { resolve } = require('./helpers')
 module.exports = (config, settings, src, dst, options = {}) => {
   src = [].concat(src).map(e => resolve(e))
 
-  options = Object.assign({
+  options = Object.assign(
+    {
       precision: 8,
       sourcemaps: !!settings.sourcemaps,
       includePaths: src,
-  }, options)
+    },
+    options
+  )
 
   const extractStyles = new ExtractTextPlugin({
-    filename: dst + '/' + (settings.versioning ? '[name].[contenthash:8].css' : '[name].css'),
+    filename:
+      `${dst}/` +
+      (settings.versioning ? '[name].[contenthash:8].css' : '[name].css'),
     allChunks: true,
     disable: !settings.production,
   })
@@ -19,10 +24,10 @@ module.exports = (config, settings, src, dst, options = {}) => {
   config.module.rules.push({
     test: /\.(sass|scss)$/,
     loader: extractStyles.extract({
-      fallback: 'style-loader',
+      fallback: require.resolve('style-loader'),
       use: [
         {
-          loader: 'css-loader',
+          loader: require.resolve('css-loader'),
           options: {
             sourceMap: options.sourcemaps,
             minimize: {
@@ -32,7 +37,7 @@ module.exports = (config, settings, src, dst, options = {}) => {
                 browsers: ['last 2 versions'],
               },
               discardComments: {
-                removeAll : true,
+                removeAll: true,
               },
               discardUnused: false,
               mergeIdents: false,
@@ -43,11 +48,11 @@ module.exports = (config, settings, src, dst, options = {}) => {
           },
         },
         {
-          loader: 'sass-loader',
+          loader: require.resolve('sass-loader'),
           options: options,
-        }
+        },
       ],
-    })
+    }),
   })
 
   config.plugins.push(extractStyles)

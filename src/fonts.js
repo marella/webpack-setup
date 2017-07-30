@@ -1,8 +1,13 @@
 module.exports = (config, settings, dst, options = {}) => {
-  options = Object.assign({
-    name  : dst + '/' + (settings.versioning ? '[name].[hash:8].[ext]' : '[name].[ext]'),
-    limit : 10000,
-  }, options)
+  options = Object.assign(
+    {
+      name:
+        `${dst}/` +
+        (settings.versioning ? '[name].[hash:8].[ext]' : '[name].[ext]'),
+      limit: 10000,
+    },
+    options
+  )
 
   const fonts = [
     ['woff', 'application/font-woff'],
@@ -18,9 +23,9 @@ module.exports = (config, settings, dst, options = {}) => {
     options.mimetype = mimetype
 
     config.module.rules.push({
-      test    : new RegExp(`\\.${extension}$`),
-      loader  : 'url-loader',
-      options : options,
+      test: new RegExp(`\\.${extension}$`),
+      loader: require.resolve('url-loader'),
+      options: options,
     })
   })
 }

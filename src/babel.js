@@ -6,7 +6,7 @@ module.exports = (config, settings, src, options = {}) => {
   config.module.rules.push({
     test: /\.(js|jsx)$/,
     include: src,
-    loader: 'babel-loader',
+    loader: require.resolve('babel-loader'),
     options,
   })
 }
