@@ -2,6 +2,7 @@ const tools = {
   babel: require('./babel'),
   copy: require('./copy'),
   define: require('./define'),
+  eslint: require('./eslint'),
   externals: require('./externals'),
   fonts: require('./fonts'),
   html: require('./html'),

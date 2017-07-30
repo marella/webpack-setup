@@ -32,6 +32,7 @@ setup
     output: 'build',
   })
   .js('src/index.js', 'js')
+  .eslint('src', { 'extends': 'eslint:recommended' })
   .babel('src', { presets: ['es2015'] })
   .sass('src/styles', 'css')
 
@@ -89,6 +90,15 @@ setup
   .define({
     'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) },
   })
+```
+
+#### `eslint(src, options = {})`
+
+Configures `eslint-loader` for JS files. `src` specifies the directory paths to include for linting. `options` object is passed as `eslint-loader` options.
+
+```js
+setup
+  .eslint('src', { 'extends': 'eslint:recommended' })
 ```
 
 #### `externals(externals)`
