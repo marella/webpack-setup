@@ -4,14 +4,13 @@ module.exports = (config, settings, dst, options = {}) => {
       name:
         `${dst}/` +
         (settings.versioning ? '[name].[hash:8].[ext]' : '[name].[ext]'),
-      limit: 8192,
     },
     options
   )
 
   config.module.rules.push({
-    test: /\.(bmp|gif|jpe?g|png|svg)$/,
-    loader: require.resolve('url-loader'),
+    test: /\.(bmp|gif|jpeg|jpg|png|svg)$/,
+    loader: require.resolve('file-loader'),
     options: options,
   })
 }

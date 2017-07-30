@@ -114,7 +114,7 @@ setup
 
 #### `fonts(dst, options = {})`
 
-Configures `url-loader` to load fonts. `dst` specifies the output directory of font files relative to the `settings.output` directory. `options` object is passed to `url-loader`.
+Configures `file-loader` to load fonts. `dst` specifies the output directory of font files relative to the `settings.output` directory. `options` object is passed as `file-loader` options.
 
 ```js
 setup
@@ -141,7 +141,7 @@ setup
 
 #### `images(dst, options = {})`
 
-Configures `url-loader` to load images. `dst` specifies the output directory of image files relative to the `settings.output` directory. `options` object is passed to `url-loader`.
+Configures `file-loader` to load images. `dst` specifies the output directory of image files relative to the `settings.output` directory. `options` object is passed as `file-loader` options.
 
 ```js
 setup
