@@ -2,12 +2,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { resolve } = require('./helpers')
 
 module.exports = (config, settings, src, dst, options = {}) => {
+  const { production, sourcemaps, versioning } = settings
   src = [].concat(src).map(e => resolve(e))
-
   options = Object.assign(
     {
       precision: 8,
-      sourcemaps: !!settings.sourcemaps,
+      sourcemaps: !!sourcemaps,
       includePaths: src,
     },
     options
@@ -15,10 +15,9 @@ module.exports = (config, settings, src, dst, options = {}) => {
 
   const extractStyles = new ExtractTextPlugin({
     filename:
-      `${dst}/` +
-      (settings.versioning ? '[name].[contenthash:8].css' : '[name].css'),
+      `${dst}/` + (versioning ? '[name].[contenthash:8].css' : '[name].css'),
     allChunks: true,
-    disable: !settings.production,
+    disable: !production,
   })
 
   config.module.rules.push({
