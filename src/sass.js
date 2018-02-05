@@ -7,7 +7,7 @@ module.exports = (config, settings, src, dst, options = {}) => {
   options = Object.assign(
     {
       precision: 8,
-      sourcemaps: !!sourcemaps,
+      sourceMap: !!sourcemaps,
       includePaths: src,
     },
     options
@@ -28,7 +28,7 @@ module.exports = (config, settings, src, dst, options = {}) => {
         {
           loader: require.resolve('css-loader'),
           options: {
-            sourceMap: options.sourcemaps,
+            sourceMap: options.sourceMap,
             minimize: {
               autoprefixer: {
                 add: true,
@@ -42,7 +42,7 @@ module.exports = (config, settings, src, dst, options = {}) => {
               mergeIdents: false,
               reduceIdents: false,
               safe: true,
-              sourcemap: options.sourcemaps,
+              sourcemap: options.sourceMap,
             },
           },
         },
