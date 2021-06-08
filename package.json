@@ -1,6 +1,6 @@
 {
   "name": "webpack-setup",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Webpack config simplified.",
   "main": "src/index.js",
   "dependencies": {
